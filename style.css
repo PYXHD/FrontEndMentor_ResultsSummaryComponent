@@ -1,0 +1,242 @@
+@font-face {
+  font-family: Hanken-medium;
+  src: url(./assets/fonts/HankenGrotesk-Medium.ttf);
+}
+@font-face {
+  font-family: Hanken-bold;
+  src: url(./assets/fonts/HankenGrotesk-Bold.ttf);
+}
+@font-face {
+  font-family: Hanken-extrabold;
+  src: url(./assets/fonts/HankenGrotesk-ExtraBold.ttf);
+}
+
+:root {
+  --fontMedium: Hanken-medium;
+  --fontBold: Hanken-bold;
+  --fontExtraBold: Hanken-extrabold;
+
+  --white1: #fafafa;
+  --white2: rgb(184, 184, 184);
+  --gray: rgb(101, 101, 101);
+  --purple: #303b59;
+  --degradedCard1: #6743ff;
+  --degradedCard2: #312ceb;
+  --degradedScore1: #4c22ca;
+  --degradedScore2: #4734ee;
+  --reaction-container: rgba(255, 0, 0, 0.05);
+  --reaction: red;
+  --memory-container: rgba(255, 166, 0, 0.05);
+  --memory: orange;
+  --verbal-container: rgba(0, 128, 0, 0.05);
+  --verbal: green;
+  --visual-container: rgba(0, 0, 255, 0.05);
+  --visual: blue;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.result-card {
+  width: 550px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background: var(--white1);
+  border-radius: 30px;
+  box-shadow: 8px 8px 20px rgba(128, 128, 128, 0.315);
+}
+.left-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  background: linear-gradient(var(--degradedCard1), var(--degradedCard2));
+  border-radius: 30px;
+}
+h1 {
+  font-family: var(--fontBold);
+  font-weight: 100;
+  font-size: 1.2rem;
+  color: var(--white2);
+}
+.score {
+  width: 65%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(var(--degradedScore1), var(--degradedScore2));
+  border-radius: 50%;
+  padding: 30px;
+  font-family: var(--fontExtraBold);
+  font-size: 2.5rem;
+  color: var(--white1);
+}
+.score span {
+  font-family: var(--fontMedium);
+  font-size: 0.7rem;
+  color: var(--white2);
+}
+.left-container > span {
+  font-family: var(--fontBold);
+  font-size: 1.5rem;
+  color: var(--white1);
+}
+.left-container > p {
+  width: 80%;
+  font-family: var(--fontMedium);
+  font-size: 0.8rem;
+  color: var(--white2);
+  margin-top: -10px;
+}
+.right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+}
+h2 {
+  font-family: var(--fontBold);
+  font-weight: 100;
+  font-size: 1.2rem;
+  color: var(--purple);
+}
+.result-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+}
+.result-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+.result-left-part,
+.result-right-part {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.result-left-part img {
+  width: 30%;
+}
+.result-category {
+  font-family: var(--fontBold);
+  font-size: 0.8rem;
+}
+.result-score {
+  font-family: var(--fontExtraBold);
+  font-size: 0.8rem;
+  color: var(--purple);
+}
+.result-base {
+  font-family: var(--fontMedium);
+  font-size: 0.8rem;
+  color: var(--white2);
+}
+
+/* Here is the individual formatting of the "result-container" blocks (background and text color) */
+.result-reaction-container {
+  background: var(--reaction-container);
+}
+.result-reaction {
+  color: var(--reaction);
+}
+.result-memory-container {
+  background: var(--memory-container);
+}
+.result-memory {
+  color: var(--memory);
+}
+.result-verbial-container {
+  background: var(--verbal-container);
+}
+.result-verbial {
+  color: var(--verbal);
+}
+.result-visual-container {
+  background: var(--visual-container);
+}
+.result-visual {
+  color: var(--visual);
+}
+
+/* Button */
+.btn {
+  cursor: pointer;
+  background: var(--purple);
+  border: none;
+  border-radius: 20px;
+  padding: 12px;
+  font-family: var(--fontBold);
+  font-size: 0.8rem;
+  color: var(--white1);
+  position: relative;
+  z-index: 1;
+}
+.btn:hover::after {
+  opacity: 1;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(var(--degradedCard1), var(--degradedCard2));
+  opacity: 0;
+  z-index: -1;
+  border-radius: 20px;
+  transition: opacity 250ms;
+}
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  line-height: 25px;
+}
+
+@media screen and (max-width: 550px) {
+  body {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .result-card {
+    width: 100vw;
+    grid-template-columns: 1fr;
+    box-shadow: none;
+  }
+  .left-container {
+    border-radius: 0 0 30px 30px;
+  }
+  .score {
+    width: 40%;
+    padding: 20px;
+  }
+  .right-container {
+    gap: 30px;
+  }
+  .btn {
+    margin-top: 30px;
+  }
+  .attribution {
+    margin-top: 80px;
+    position: static;
+  }
+}
